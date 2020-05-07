@@ -17,36 +17,36 @@ function scrollToY (y, duration = 0, element = document.scrollingElement) {
       if (scrollCount >= Math.PI) return element.scrollTop = y;
       element.scrollTop = cosParameter + y + cosParameter * Math.cos(scrollCount);
     }
-		oldTimestamp = newTimestamp;
+    oldTimestamp = newTimestamp;
     window.requestAnimationFrame(step);
   }
-	window.requestAnimationFrame(step);
+  window.requestAnimationFrame(step);
 }
 
 /*
- * duration: scroll duration in milliseconds
+ * duration: scroll duration in milliseconds; default is 0 (no transition)
  * this function is using the scrollToY function
  */
-function scrollToTop(duration) {
-  scrollToY(duration, 0);
+function scrollToTop(duration = 0) {
+  scrollToY(0, duration, document.scrollingElement);
 }
 
 /*
- * duration: scroll duration in milliseconds
- * id: the id of the element as a string
- * this function is using the scrollToY function
+ * id: the id of the element as a string that should be scrolled to
+ * duration: scroll duration in milliseconds; default is 0 (no transition)
+ * this function is using the scrollToY function on the main scrolling element
  */
-function scrollToId(duration, id) {
-	var offset = document.getElementById(id).getBoundingClientRect().top;
-	scrollToY(duration, window.scrollY + offset);
+function scrollToId(id, duration = 0) {
+  const offset = Math.round(document.getElementById(id).getBoundingClientRect().top);
+	scrollToY(document.scrollingElement.scrollTop + offset, duration);
 }
 
 /*
- * duration: scroll duration in milliseconds
- * element: a node object
- * this function is using the scrollToY function
+ * element: the node object that should be scrolled to
+ * duration: scroll duration in milliseconds; default is 0 (no transition)
+ * this function is using the scrollToY function on the main scrolling element
  */
-function scrollToElement(duration, element) {
-	var offset = element.getBoundingClientRect().top;
-	scrollToY(duration, window.scrollY + offset);
+function scrollToElement(element, duration = 0) {
+	const offset = Math.round(element.getBoundingClientRect().top);
+	scrollToY(document.scrollingElement.scrollTop + offset, duration);
 }
