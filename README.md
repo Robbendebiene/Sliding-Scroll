@@ -3,12 +3,12 @@
 
 > These are vertical scrolling functions only, even though the code can be easily changed to match the horizontal direction as well.
 
-#### Scroll in a specific duration given in milliseconds to a specific position y, where y represents a number between 0 and the length of your page.
+#### Scroll smoothly to a specific y position, where y represents a number between 0 and the max scroll height.
 ```
-function scrollToY(duration, y);
+function scrollToY(y, duration, element);
 ```
 
-> Note: The following functions are depending on the first one.
+> Note: The following functions depend on the first one.
 
 #### Scroll to the top of the page.
 ```
@@ -17,10 +17,10 @@ function scrollToTop(duration);
 
 #### Scroll to the element with the specific id given as a string.
 ```
-function scrollToId(duration, id);
+function scrollToId(id, duration);
 ```
 
 #### Scroll to the specific element given as a node object.
 ```
-function scrollToElement(duration, element);
+function scrollToElement(element, duration);
 ```
