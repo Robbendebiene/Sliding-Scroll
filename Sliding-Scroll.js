@@ -1,16 +1,22 @@
 /*
- * duration: scroll duration in milliseconds
  * y: the y coordinate to scroll, 0 = top
+ * duration: scroll duration in milliseconds; default is 0 (no transition)
+ * element: the html element that should be scrolled ; default is the main scrolling element
  */
-function scrollToY(duration, y) {
-  var cosParameter = (window.scrollY - y) / 2,
-  		scrollCount = 0,
-			oldTimestamp = performance.now();
+function scrollToY (y, duration = 0, element = document.scrollingElement) {
+  // cancel if already on target position
+  if (element.scrollTop === y) return;
+
+  const cosParameter = (element.scrollTop - y) / 2;
+  let scrollCount = 0, oldTimestamp = null;
+
   function step (newTimestamp) {
-    scrollCount += Math.PI / (duration / (newTimestamp - oldTimestamp));
-    if (scrollCount >= Math.PI) window.scrollTo(0, y);
-    if (window.scrollY === y) return;
-    window.scrollTo(0, Math.round((cosParameter + y) + cosParameter * Math.cos(scrollCount)));
+    if (oldTimestamp !== null) {
+      // if duration is 0 scrollCount will be Infinity
+      scrollCount += Math.PI * (newTimestamp - oldTimestamp) / duration;
+      if (scrollCount >= Math.PI) return element.scrollTop = y;
+      element.scrollTop = cosParameter + y + cosParameter * Math.cos(scrollCount);
+    }
 		oldTimestamp = newTimestamp;
     window.requestAnimationFrame(step);
   }
