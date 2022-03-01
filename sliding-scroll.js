@@ -36,9 +36,9 @@ function scrollToTop(duration = 0) {
  * duration: scroll duration in milliseconds; default is 0 (no transition)
  * this function is using the scrollToY function on the main scrolling element
  */
-function scrollToId(id, duration = 0) {
+function scrollToId(id, duration = 0, customOffset = 0) {
   const offset = Math.round(document.getElementById(id).getBoundingClientRect().top);
-	scrollToY(document.scrollingElement.scrollTop + offset, duration);
+	scrollToY(document.scrollingElement.scrollTop + offset + customOffset, duration);
 }
 
 /*
@@ -46,7 +46,7 @@ function scrollToId(id, duration = 0) {
  * duration: scroll duration in milliseconds; default is 0 (no transition)
  * this function is using the scrollToY function on the main scrolling element
  */
-function scrollToElement(element, duration = 0) {
+function scrollToElement(element, duration = 0, customOffset = 0) {
 	const offset = Math.round(element.getBoundingClientRect().top);
-	scrollToY(document.scrollingElement.scrollTop + offset, duration);
+	scrollToY(document.scrollingElement.scrollTop + offset + customOffset, duration);
 }
