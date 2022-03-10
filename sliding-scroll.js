@@ -35,18 +35,20 @@ function scrollToTop(duration = 0) {
  * id: the id of the element as a string that should be scrolled to
  * duration: scroll duration in milliseconds; default is 0 (no transition)
  * this function is using the scrollToY function on the main scrolling element
+ * customOffset: an additional offset value to adjust the scroll position; default is 0 (no additional offset)
  */
-function scrollToId(id, duration = 0) {
+function scrollToId(id, duration = 0, customOffset = 0) {
   const offset = Math.round(document.getElementById(id).getBoundingClientRect().top);
-	scrollToY(document.scrollingElement.scrollTop + offset, duration);
+	scrollToY(document.scrollingElement.scrollTop + offset + customOffset, duration);
 }
 
 /*
  * element: the node object that should be scrolled to
  * duration: scroll duration in milliseconds; default is 0 (no transition)
  * this function is using the scrollToY function on the main scrolling element
+ * customOffset: an additional offset value to adjust the scroll position; default is 0 (no additional offset)
  */
-function scrollToElement(element, duration = 0) {
+function scrollToElement(element, duration = 0, customOffset = 0) {
 	const offset = Math.round(element.getBoundingClientRect().top);
-	scrollToY(document.scrollingElement.scrollTop + offset, duration);
+	scrollToY(document.scrollingElement.scrollTop + offset + customOffset, duration);
 }
