@@ -17,10 +17,10 @@ function scrollToTop(duration);
 
 #### Scroll to the element with the specific id given as a string.
 ```
-function scrollToId(id, duration);
+function scrollToId(id, duration, customOffset = 0);
 ```
 
 #### Scroll to the specific element given as a node object.
 ```
-function scrollToElement(element, duration);
+function scrollToElement(element, duration, customOffset = 0);
 ```
