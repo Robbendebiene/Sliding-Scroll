@@ -1,0 +1,25 @@
+
+name: Create minified JavaScript file
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  minify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Auto Minify
+        uses: nizarmah/auto-minify@v2.1
+        with:
+          js_engine: uglify-js
+
+      # Auto commits minified content to the existing files
+      - name: Auto commit minified files
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: "Github Action: Auto Minified JS files"
+          branch: ${{ github.ref }}
