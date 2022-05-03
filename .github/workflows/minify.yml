@@ -14,6 +14,8 @@ jobs:
 
       - name: Auto Minify
         uses: nizarmah/auto-minify@v2.1
+        with:
+          js_engine: uglify-js
 
       # Auto commits minified content to the existing files
       - name: Auto commit minified files
