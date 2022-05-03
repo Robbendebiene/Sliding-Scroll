@@ -2,11 +2,12 @@
 
 ## A minimal pure JavaScript smooth scrolling function.
 
-Scroll smoothly over time to a given absolute scroll position defined by the top and left properties.
+Scroll smoothly over time to a given absolute scroll position defined by the top and left properties.<br/>
 If the top or left scroll position is omitted it will fallback to the current scroll position.
-*duration:* scroll duration in milliseconds; defaults to 0 (no transition)
-*element:* the html element that should be scrolled; defaults to the main scrolling element
-*easingFunction:* defines the scrolling rate over time; defaults to ease in and out sin.
+
+**duration:** Scroll duration in milliseconds; defaults to 0 (no transition)<br/>
+**element:** The html element that should be scrolled; defaults to the main scrolling element<br/>
+**easingFunction:** Defines the scrolling rate over time; defaults to ease in and out sin.<br/>
 You can either use one of the predefined functions from EASING_FUNCTIONS or a custom one.
 
 
